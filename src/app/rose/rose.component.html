@@ -1,0 +1,42 @@
+<div class="container" style="margin-top: 5rem;">
+    <div class="row">
+        <div class="col-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h6 class="my-0 font-weight-normal">Mode Manager</h6>
+                </div>
+
+                <!-- Radio -->
+                <div class="btn-group my-3" style="max-width: 100%;">
+                    <button routerLink="./" mdbBtn class="ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
+                        Manual
+                    </button>
+                    <button routerLink="./automatic" mdbBtn class="mx-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Middle" size="sm" mdbWavesEffect>
+                        Automatic
+                    </button>
+                    <button mdbBtn class="ml-1 mr-2" color="primary" [(ngModel)]="radioModel" mdbRadio="Right" size="sm" mdbWavesEffect>
+                        Feedback
+                    </button>
+                </div>
+
+                <blockquote class="blockquote text-center">
+                    <h5 class="my-0 font-weight-normal center">Schedule of today</h5>
+                </blockquote>
+
+                <blockquote class="blockquote">
+                    <ul>
+                        <li><h6 class="my-0 font-weight-normal">Watering 8:30 am | 10s</h6></li>
+                        <li><h6 class="my-0 font-weight-normal">Watering 7:15 pm | 15s</h6></li>
+                        <li><h6 class="my-0 font-weight-normal">Light 8:30 pm | 1000s</h6></li>
+                        <li><h6 class="my-0 font-weight-normal">Light 1:30 pm | 1500s</h6></li>
+                    </ul>
+                </blockquote>
+                
+            </div>
+        </div>
+
+        <div class="col-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
