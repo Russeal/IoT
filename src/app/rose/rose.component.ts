@@ -10,9 +10,14 @@ export class RoseComponent implements OnInit {
   public checkModel: any = { left: true, middle: false, right: false };
   public radioModel: string = 'Left';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    if (true) {
+      this.checkModel = { left: false, middle: true, right: false };
+      this.radioModel = 'Middle';
+      document.getElementById('autoId')?.click()
+    }
   }
-
+  
 }

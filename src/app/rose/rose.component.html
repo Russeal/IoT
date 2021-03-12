@@ -1,41 +1,61 @@
-<div class="container" style="margin-top: 5rem;">
+<div class="container" style="margin-top: 7rem;">
     <div class="row">
         <div class="col-4">
-            <div class="card shadow-sm">
-                <div class="card-header">
-                    <h6 class="my-0 font-weight-normal">Mode Manager</h6>
+
+            <!--Card-->
+            <mdb-card>
+
+                <!--Card image-->
+                <div class="view overlay waves-light" mdbWavesEffect>
+                    <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"></mdb-card-img>
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
                 </div>
+                <!--/.Card image-->
 
-                <!-- Radio -->
-                <div class="btn-group my-3" style="max-width: 100%;">
-                    <button routerLink="./" mdbBtn class="ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
-                        Manual
-                    </button>
-                    <button routerLink="./automatic" mdbBtn class="mx-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Middle" size="sm" mdbWavesEffect>
-                        Automatic
-                    </button>
-                    <button mdbBtn class="ml-1 mr-2" color="primary" [(ngModel)]="radioModel" mdbRadio="Right" size="sm" mdbWavesEffect>
-                        Feedback
-                    </button>
-                </div>
+                <!--Card content-->
+                <mdb-card-body>
 
-                <blockquote class="blockquote text-center">
-                    <h5 class="my-0 font-weight-normal center">Schedule for today</h5>
-                </blockquote>
+                    <!--Title-->
+                    <mdb-card-title>
+                        <h4>Mode Manager</h4>
+                    </mdb-card-title>
 
-                <blockquote class="blockquote">
+                    <hr>
+
+                    <!-- Radio -->
+                    <div class="btn-group">
+                        <button id="manuId" routerLink="./" mdbBtn class="px ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
+                            Manual
+                        </button>
+                        <button id="autoId" routerLink="./automatic" mdbBtn class="px mx-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Middle" size="sm" mdbWavesEffect>
+                            Automatic
+                        </button>
+                        <button mdbBtn class="px ml-1 mr-2" color="primary" [(ngModel)]="radioModel" mdbRadio="Right" size="sm" mdbWavesEffect>
+                            Feedback
+                        </button>
+                    </div>
+
+                    <h5 class="mt-4 mb-2 font-weight-normal text-center">Schedule for today</h5>
+                    
                     <ul>
                         <li><h6 class="my-0 font-weight-normal">Watering 8:30 am | 10s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Watering 7:15 pm | 15s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Light 8:30 pm | 1000s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Light 1:30 pm | 1500s</h6></li>
                     </ul>
-                </blockquote>
-                
-            </div>
+
+                </mdb-card-body>
+                <!--/.Card content-->
+            </mdb-card>
+            <!--/.Card-->
+
         </div>
 
-        <div class="col-8">
+        <div class="col-1"></div>
+
+        <div class="col-7">
             <router-outlet></router-outlet>
         </div>
     </div>
