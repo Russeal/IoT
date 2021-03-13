@@ -16,7 +16,6 @@ export class RoseComponent implements OnInit {
     if (true) {
       this.checkModel = { left: false, middle: true, right: false };
       this.radioModel = 'Middle';
-      document.getElementById('autoId')?.click()
     }
   }
   

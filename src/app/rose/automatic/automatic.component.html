@@ -1,79 +1,77 @@
-<div class="">
-    <div class="card">
-        <div class="card-header" >
-            <h3 class="text-center font-weight-normal">Automatic Control</h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4" style="border-right: 1px solid;">
-                    <h5>&nbsp;Choose days:</h5>
+<div class="card" style="margin-top: 2.5rem;">
+    <div class="card-header" >
+        <h3 class="text-center font-weight-normal">Automatic Control</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-4" style="border-right: 1px solid;">
+                <h5>&nbsp;Choose days:</h5>
 
-                    <div class="btn-group-vertical btn-group-toggle">
+                <div class="btn-group-vertical btn-group-toggle">
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.monday" size="md" mdbCheckbox mdbWavesEffect>
-                            Monday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.monday" size="md" mdbCheckbox mdbWavesEffect>
+                        Monday
+                    </label>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.tuesday" size="md" mdbCheckbox mdbWavesEffect>
-                            Tuesday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.tuesday" size="md" mdbCheckbox mdbWavesEffect>
+                        Tuesday
+                    </label>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.wednesday" size="md" mdbCheckbox mdbWavesEffect>
-                            Wednesday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.wednesday" size="md" mdbCheckbox mdbWavesEffect>
+                        Wednesday
+                    </label>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.thursday" size="md" mdbCheckbox mdbWavesEffect>
-                            Thursday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.thursday" size="md" mdbCheckbox mdbWavesEffect>
+                        Thursday
+                    </label>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.friday" size="md" mdbCheckbox mdbWavesEffect>
-                            Friday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.friday" size="md" mdbCheckbox mdbWavesEffect>
+                        Friday
+                    </label>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.saturday" size="md" mdbCheckbox mdbWavesEffect>
-                            Saturday
-                        </label>
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel.saturday" size="md" mdbCheckbox mdbWavesEffect>
+                        Saturday
+                    </label>
 
-                        <label mdbBtn color="secondary" [(ngModel)]="checkModel.sunday" size="md" mdbCheckbox mdbWavesEffect>
-                            Sunday
-                        </label>
-                            
-                    </div>
+                    <label mdbBtn color="secondary" [(ngModel)]="checkModel.sunday" size="md" mdbCheckbox mdbWavesEffect>
+                        Sunday
+                    </label>
 
                 </div>
-                <div class="col-6 pl-5">
-                    <h4>Enter time:</h4>
-                        
-                    <div class="md-form">
-                        <input
-                            type="time"
-                            id="input"
-                            class="form-control"
-                            value="13:00"
-                            mdbInput
-                        />
-                        <label for="input">Choose your time</label>
-                    </div>
-                        
-                    <h4>Enter duration:</h4>
-                    <input class="form-control form-control-sm" type="text" placeholder="-1 ms">
-                    <br>
-                    <br>
-                    <div class="btn-group btn-group-toggle">
 
-                        <label class="mb-2 mr-4" mdbBtn color="secondary" [(ngModel)]="checkModel2.water" mdbCheckbox mdbWavesEffect>
-                            Water
-                        </label>
+            </div>
+            <div class="col-6 pl-5">
+                <h4>Enter time:</h4>
 
-                        <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel2.light" mdbCheckbox mdbWavesEffect>
-                            Light
-                        </label>
-                            
-                    </div>
-
-                    <br>
-                    <button type="button" class="btn btn-sm btn-block btn-outline-primary" style="width: 50%; margin: 1.4rem auto 0 auto;">Submit</button>
+                <div class="md-form">
+                    <input
+                        type="time"
+                        id="input"
+                        class="form-control"
+                        value="13:00"
+                        mdbInput
+                    />
+                    <label for="input">Choose your time</label>
                 </div>
+
+                <h4>Enter duration:</h4>
+                <input class="form-control form-control-sm" type="text" placeholder="-1 ms">
+                <br>
+                <br>
+                <div class="btn-group btn-group-toggle">
+
+                    <label class="mb-2 mr-4" mdbBtn color="secondary" [(ngModel)]="checkModel2.water" mdbCheckbox mdbWavesEffect>
+                        Water
+                    </label>
+
+                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel2.light" mdbCheckbox mdbWavesEffect>
+                        Light
+                    </label>
+                            
+                </div>
+
+                <br>
+                <button type="button" class="btn btn-sm btn-block btn-outline-primary" style="width: 50%; margin: 1.4rem auto 0 auto;">Submit</button>
             </div>
         </div>
     </div>

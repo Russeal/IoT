@@ -18,15 +18,18 @@
                 <mdb-card-body>
 
                     <!--Title-->
-                    <mdb-card-title>
-                        <h4>Mode Manager</h4>
+                    <mdb-card-title class="row">
+                        <h4 class="ml-4">Mode Manager</h4>
+                        <a id="dashboard" routerLink="./" mdbBtn class="px-3 mt-0 mr-4" style="margin-left: auto" color="danger" size="sm" mdbWavesEffect>
+                            Dashboard
+                        </a>
                     </mdb-card-title>
 
                     <hr>
 
                     <!-- Radio -->
                     <div class="btn-group">
-                        <button id="manuId" routerLink="./" mdbBtn class="px ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
+                        <button id="manuId" routerLink="./manual" mdbBtn class="px ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
                             Manual
                         </button>
                         <button id="autoId" routerLink="./automatic" mdbBtn class="px mx-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Middle" size="sm" mdbWavesEffect>
