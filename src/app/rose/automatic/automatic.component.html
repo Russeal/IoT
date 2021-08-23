@@ -1,6 +1,13 @@
-<div class="card" style="margin-top: 2.5rem;">
-    <div class="card-header" >
-        <h3 class="text-center font-weight-normal">Automatic Control</h3>
+<div class="card" style="margin-top: 1.5rem;">
+    <div class="row m-0 card-header" >
+
+      <h3 class="text-center font-weight-normal" style="margin-left: 35%;">Automatic Control</h3>
+
+      <div class="custom-control custom-switch pt-1" style="margin-left: auto;">
+          <input type="checkbox" class="custom-control-input" id="customSwitch2"[checked]="activeAuto" (change)="changeStatus()">
+          <label class="custom-control-label" for="customSwitch2">On</label>
+      </div>
+
     </div>
     <div class="card-body">
         <div class="row">
@@ -46,16 +53,16 @@
                 <div class="md-form">
                     <input
                         type="time"
-                        id="input"
+                        id="inputTime"
                         class="form-control"
                         value="13:00"
                         mdbInput
                     />
-                    <label for="input">Choose your time</label>
+                    <label for="inputTime">Choose your time</label>
                 </div>
 
                 <h4>Enter duration:</h4>
-                <input class="form-control form-control-sm" type="text" placeholder="-1 ms">
+                <input class="form-control form-control-sm" id="inputDuration" type="text" placeholder="-1 ms">
                 <br>
                 <br>
                 <div class="btn-group btn-group-toggle">
@@ -67,11 +74,20 @@
                     <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel2.light" mdbCheckbox mdbWavesEffect>
                         Light
                     </label>
-                            
+
                 </div>
 
                 <br>
-                <button type="button" class="btn btn-sm btn-block btn-outline-primary" style="width: 50%; margin: 1.4rem auto 0 auto;">Submit</button>
+                <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
+                        style="width: 50%; margin: 1.4rem auto 0 auto;"
+                        [disabled]="!activeAuto ||
+                                    (!checkModel2.water && !checkModel2.light) ||
+                                    (!checkModel.monday && !checkModel.tuesday &&
+                                    !checkModel.wednesday && !checkModel.thursday
+                                    && !checkModel.friday && !checkModel.saturday &&
+                                    !checkModel.sunday)"
+
+                                    >Submit</button>
             </div>
         </div>
     </div>

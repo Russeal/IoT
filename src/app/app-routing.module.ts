@@ -5,6 +5,7 @@ import { CactusComponent } from './cactus/cactus.component';
 import { MainComponent } from './main/main.component';
 import { AutomaticComponent } from './rose/automatic/automatic.component';
 import { DashboardComponent } from './rose/dashboard/dashboard.component';
+import { FeedbackComponent } from './rose/feedback/feedback.component';
 import { ManualComponent } from './rose/manual/manual.component';
 import { RoseComponent } from './rose/rose.component';
 
@@ -13,9 +14,9 @@ const routes: Routes = [
     path: '', children: [
       { path: '', component: MainComponent },
       { path: ':flower', component: RoseComponent, children: [
-        { path: '', component: DashboardComponent },
+        { path: '', component: ManualComponent },
         { path: 'automatic', component: AutomaticComponent },
-        { path: 'manual', component: ManualComponent }
+        { path: 'feedback', component: FeedbackComponent }
       ]}
     ]
   }

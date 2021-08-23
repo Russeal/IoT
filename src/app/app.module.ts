@@ -12,6 +12,7 @@ import { CactusComponent } from './cactus/cactus.component';
 import { ManualComponent } from './rose/manual/manual.component';
 import { AutomaticComponent } from './rose/automatic/automatic.component';
 import { DashboardComponent } from './rose/dashboard/dashboard.component';
+import { FeedbackComponent } from './rose/feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DashboardComponent } from './rose/dashboard/dashboard.component';
     CactusComponent,
     ManualComponent,
     AutomaticComponent,
-    DashboardComponent
+    DashboardComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,14 @@
-<div class="container" style="margin-top: 7rem;">
+<div class="container myContainer" style="margin-top: 7rem;">
+    <h2 style="text-align: center;" class="my-5"><b>Mode Manager</b></h2>
     <div class="row">
         <div class="col-4">
 
             <!--Card-->
-            <mdb-card>
+            <mdb-card *ngIf="plantId && plantName">
 
                 <!--Card image-->
                 <div class="view overlay waves-light" mdbWavesEffect>
-                    <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg"></mdb-card-img>
+                    <mdb-card-img [src]="plant?.imageUrl"></mdb-card-img>
                     <a>
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -19,9 +20,10 @@
 
                     <!--Title-->
                     <mdb-card-title class="row">
-                        <h4 class="ml-4">Mode Manager</h4>
-                        <a id="dashboard" routerLink="./" mdbBtn class="px-3 mt-0 mr-4" style="margin-left: auto" color="danger" size="sm" mdbWavesEffect>
-                            Dashboard
+                        <h4 class="ml-4" style="margin-top: 0.5rem; margin-bottom: 0">{{plantName}}</h4>
+                        <!-- <h4 class="ml-4">Mode Manager</h4> -->
+                        <a id="deleteButton" (click)="frame.show()" data-toggle="modal" data-target="#basicExample" mdbBtn class="my-0 mr-4" style="margin-left: auto" color="danger" size="sm" mdbWavesEffect>
+                          <mdb-icon far icon="trash-alt"></mdb-icon>
                         </a>
                     </mdb-card-title>
 
@@ -29,24 +31,31 @@
 
                     <!-- Radio -->
                     <div class="btn-group">
-                        <button id="manuId" routerLink="./manual" mdbBtn class="px ml-2 mr-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Left" size="sm" mdbWavesEffect>
+                        <button id="manuId" (click)="goToLink('./')" mdbBtn class="px ml-2 mr-1" color="primary" size="sm" mdbWavesEffect>
                             Manual
                         </button>
-                        <button id="autoId" routerLink="./automatic" mdbBtn class="px mx-1" color="primary" [(ngModel)]="radioModel" mdbRadio="Middle" size="sm" mdbWavesEffect>
+                        <button id="autoId" (click)="goToLink('./automatic')" mdbBtn class="px mx-1" color="primary" size="sm" mdbWavesEffect>
                             Automatic
                         </button>
-                        <button mdbBtn class="px ml-1 mr-2" color="primary" [(ngModel)]="radioModel" mdbRadio="Right" size="sm" mdbWavesEffect>
+                        <button id="feedbackId" (click)="goToLink('./feedback')" mdbBtn class="px ml-1 mr-2" color="primary" size="sm" mdbWavesEffect>
                             Feedback
                         </button>
                     </div>
 
-                    <h5 class="mt-4 mb-2 font-weight-normal text-center">Schedule for today</h5>
-                    
+                    <!-- <h5 class="mt-4 mb-2 font-weight-normal text-center">Schedule for today</h5>
+
                     <ul>
                         <li><h6 class="my-0 font-weight-normal">Watering 8:30 am | 10s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Watering 7:15 pm | 15s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Light 8:30 pm | 1000s</h6></li>
                         <li><h6 class="my-0 font-weight-normal">Light 1:30 pm | 1500s</h6></li>
+                    </ul> -->
+
+                    <h5 class="mt-4 mb-2 font-weight-normal text-center">Thresholds</h5>
+
+                    <ul>
+                        <li class="mb-2"><h6 class="my-0 font-weight-normal">Temperature: &nbsp;&nbsp;{{ plant.thresholds.minTemp }}&#8451;&nbsp; — &nbsp;{{ plant.thresholds.maxTemp }}&#8451;</h6></li>
+                        <li class="mb-2"><h6 class="my-0 font-weight-normal">Humidity: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ plant.thresholds.minHum }} g/m<sup>3</sup> — {{ plant.thresholds.maxHum }} g/m<sup>3</sup></h6></li>
                     </ul>
 
                 </mdb-card-body>
@@ -61,5 +70,32 @@
         <div class="col-7">
             <router-outlet></router-outlet>
         </div>
+    </div>
+
+    <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-notify modal-danger cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center">
+            <p class="heading m-auto">Are you sure?</p>
+          </div>
+
+          <!--Body-->
+          <div class="modal-body">
+            <h6>You are about to delete {{ plantName }}</h6>
+            <mdb-icon fas icon="times" size="4x" class="animated rotateIn"></mdb-icon>
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <a (click)="deletePlant()" mdbBtn color="danger" class="waves-effect"
+              mdbWavesEffect>Yes</a>
+            <a id="closeDelete" type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+          </div>
+        </div>
+        <!--/.Content-->
+      </div>
     </div>
 </div>
