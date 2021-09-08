@@ -1,1 +1,65 @@
-<p>feedback works!</p>
+<div class="card" style="margin-top: 1.5rem;">
+  <div class="row m-0 card-header" >
+
+    <h3 class="text-center font-weight-normal" style="margin-left: 35%;">Feedback Control</h3>
+
+    <div class="custom-control custom-switch pt-1" style="margin-left: auto;">
+        <input type="checkbox" class="custom-control-input" id="customSwitch2"[checked]="activeFeed" (change)="changeStatus()">
+        <label id="lieId" class="custom-control-label" for="customSwitch2">On</label>
+    </div>
+
+  </div>
+  <div class="card-body">
+      <div class="row">
+          <div class="col-12">
+
+              <h2 for="humidity">Humidity: {{ humidity }}</h2>
+              <input class="slider" style="width: 50%;" type="range" min="-1" max="100" id="humidity">
+
+
+
+          </div>
+          <!-- <div class="col-6 pl-5">
+              <h4>Enter time:</h4>
+
+              <div class="md-form">
+                  <input
+                      type="time"
+                      id="inputTime"
+                      class="form-control"
+                      value="13:00"
+                      mdbInput
+                  />
+                  <label for="inputTime">Choose your time</label>
+              </div>
+
+              <h4>Enter duration:</h4>
+              <input class="form-control form-control-sm" id="inputDuration" type="number" min="-1" placeholder="-1 ms">
+              <br>
+              <br>
+              <div class="btn-group btn-group-toggle">
+
+                  <label class="mb-2 mr-4" mdbBtn color="secondary" mdbCheckbox mdbWavesEffect>
+                      Water
+                  </label>
+
+                  <label class="mb-2" mdbBtn color="secondary" mdbCheckbox mdbWavesEffect>
+                      Light
+                  </label>
+
+              </div>
+
+              <br>
+              <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
+                      style="width: 50%; margin: 1.4rem auto 0 auto;"
+
+
+                                  >Submit</button>
+          </div> -->
+      </div>
+  </div>
+</div>
+
+
+
+

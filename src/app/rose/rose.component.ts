@@ -22,27 +22,29 @@ export class RoseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.plantId = this.activeRoute.snapshot.paramMap.get('flower') || ''
+    // this.plantId = this.activeRoute.snapshot.paramMap.get('flower') || ''
+    this.activeRoute.paramMap.subscribe(paramMap => {
 
-    setTimeout(() => {
-      if (this.activeRoute.snapshot.paramMap.get('manual') === 'true') {
+      this.plantId = paramMap.get('flower') || '';
+      this.getPlant()
+      this.getPlantStatus()
+
+    })
+
+    this.activeRoute.queryParams.subscribe(queryParams => {
+      if (queryParams['manual'] === 'true') {
         this.isManual = true;
         document.getElementById('manuId')?.classList.add('active')
       }
-      if (this.activeRoute.snapshot.paramMap.get('auto') === 'true') {
+      if (queryParams['auto'] === 'true') {
         this.isAuto = true;
         document.getElementById('autoId')?.classList.add('active')
       }
-      if (this.activeRoute.snapshot.paramMap.get('feedback') === 'true') {
+      if (queryParams['feedback'] === 'true') {
         this.isFeed = true;
         document.getElementById('feedbackId')?.classList.add('active')
       }
-    }, 100);
-
-    this.getPlant()
-
-    this.getPlantStatus()
-
+    })
   }
 
   private getPlant() {

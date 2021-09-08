@@ -38,6 +38,10 @@ export class ResourceService {
     return this.http.post(GeneralURL.modeURL + id + "/auto/enable/?newSchedule=True", plant);
   }
 
+  public setPlantAutoSchedule(id: string, plant: string) {
+    return this.http.post(GeneralURL.modeURL + id + "/auto/newSchedule", plant);
+  }
+
   public setPlantStatusAutoEnable(id: String) {
     return this.http.post(GeneralURL.modeURL + id + "/auto/enable/?newSchedule=False", '');
   }
@@ -48,6 +52,10 @@ export class ResourceService {
 
   public setPlantStatusFeedbackEnable(id: String, body: string) {
     return this.http.post(GeneralURL.modeURL + id + "/feedback/enable", body);
+  }
+
+  public setFeedbackParams(id: String, body: string) {
+    return this.http.post(GeneralURL.modeURL + id + "/feedback/paramChange", body);
   }
 
   public setPlantStatusFeedbackDisable(id: String) {
@@ -62,8 +70,32 @@ export class ResourceService {
 
   }
 
+  public stopPlantWater(plant: any) {
+
+    let json = JSON.stringify(plant);
+
+    return this.http.post(GeneralURL.manualURL + plant['plantId'] + "/waterControl", json);
+
+  }
+
+  public startPlantLight(plant: any) {
+
+    let json = JSON.stringify(plant);
+
+    return this.http.post(GeneralURL.manualURL + plant['plantId'] + "/lightControl", json);
+
+  }
+
+  public stopPlantLight(plant: any) {
+
+    let json = JSON.stringify(plant);
+
+    return this.http.post(GeneralURL.manualURL + plant['plantId'] + "/lightControl", json);
+
+  }
+
   public getAutomaticSchedule(id: string) {
-    return this.http.get<Array<String>>(GeneralURL.modeURL + id + "/auto/schedule/weekly");
+    return this.http.get<Array<any>>(GeneralURL.modeURL + id + "/auto/schedule/weekly");
   }
 
 }

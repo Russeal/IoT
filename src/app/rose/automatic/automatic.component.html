@@ -4,8 +4,8 @@
       <h3 class="text-center font-weight-normal" style="margin-left: 35%;">Automatic Control</h3>
 
       <div class="custom-control custom-switch pt-1" style="margin-left: auto;">
-          <input type="checkbox" class="custom-control-input" id="customSwitch2"[checked]="activeAuto" (change)="changeStatus()">
-          <label class="custom-control-label" for="customSwitch2">On</label>
+          <input type="checkbox" class="custom-control-input" id="customSwitch2"[checked]="activeAuto" (change)="changeStatus()" [disabled]="lie">
+          <label id="lieId" class="custom-control-label" for="customSwitch2">On</label>
       </div>
 
     </div>
@@ -62,7 +62,7 @@
                 </div>
 
                 <h4>Enter duration:</h4>
-                <input class="form-control form-control-sm" id="inputDuration" type="text" placeholder="-1 ms">
+                <input [(ngModel)]="dur" class="form-control form-control-sm" id="inputDuration" type="number" min="-1" placeholder="-1 ms">
                 <br>
                 <br>
                 <div class="btn-group btn-group-toggle">
@@ -80,8 +80,7 @@
                 <br>
                 <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
                         style="width: 50%; margin: 1.4rem auto 0 auto;"
-                        [disabled]="!activeAuto ||
-                                    (!checkModel2.water && !checkModel2.light) ||
+                        [disabled]="(!checkModel2.water && !checkModel2.light) ||
                                     (!checkModel.monday && !checkModel.tuesday &&
                                     !checkModel.wednesday && !checkModel.thursday
                                     && !checkModel.friday && !checkModel.saturday &&

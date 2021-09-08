@@ -14,6 +14,8 @@ export class ManualComponent implements OnInit {
   private plantId = "";
   private isAuto: boolean = false;
   private isFeed: boolean = false;
+  public waterStat: boolean = false;
+  public lightStat: boolean = false;
 
   constructor(private router: Router, private  resourceService: ResourceService, private activeRoute: ActivatedRoute) {
     this.activeStatus = false;
@@ -88,14 +90,17 @@ export class ManualComponent implements OnInit {
   }
 
   public startWatering() {
+    let duration = parseInt((<HTMLInputElement>document.getElementById("waterDuration")).value);
+    if (duration.toString() == "NaN") {
+      duration = -1;
+    }
+    this.waterStat = true;
+
     let plant = {
       'plantId': this.plantId,
       'action': 'on',
-      'duration': parseInt((<HTMLInputElement>document.getElementById("waterDuration")).value)
+      'duration': duration
     };
-    // plant.plantId = this.plantId;
-    // plant.action = "on";
-    // plant.duration = parseInt((<HTMLInputElement>document.getElementById("waterDuration")).value);
 
     console.log(plant);
 
@@ -109,4 +114,71 @@ export class ManualComponent implements OnInit {
     )
   }
 
+  public stopWatering() {
+    this.waterStat = false;
+
+    let plant = {
+      'plantId': this.plantId,
+      'action': 'off',
+      'duration': 0
+    };
+
+    console.log(plant);
+
+    this.resourceService.stopPlantWater(plant).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  public startLightning () {
+    let duration = parseInt((<HTMLInputElement>document.getElementById("lightDuration")).value);
+    if (duration.toString() == "NaN") {
+      duration = -1;
+    }
+    this.lightStat = true;
+
+    let plant = {
+      'plantId': this.plantId,
+      'action': 'on',
+      'duration': duration
+    };
+
+    console.log(plant);
+
+    this.resourceService.startPlantLight(plant).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+  }
+
+  public stopLightning () {
+    this.lightStat = false;
+
+    let plant = {
+      'plantId': this.plantId,
+      'action': 'off',
+      'duration': 0
+    };
+
+    console.log(plant);
+
+    this.resourceService.stopPlantLight(plant).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 }

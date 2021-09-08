@@ -18,12 +18,12 @@
 
                 <div class="card-body">
                     <h5>Water</h5>
-                    <h6 class="card-title pricing-card-title"><small class="text-muted">Current status:</small> off </h6>
+                    <h6 class="card-title pricing-card-title"><small class="text-muted">Current status:</small> {{ waterStat ? 'on' : 'off' }} </h6>
                     <input class="form-control form-control-sm" type="text" placeholder="Duration -1 ms" id="waterDuration">
                     <br>
                     <div class="btn-group btn-group-toggle">
-                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" (click)="startWatering()" [disabled]="!activeStatus">Start</button>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" [disabled]="!activeStatus">Stop</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" (click)="startWatering()" [disabled]="!activeStatus || waterStat">Start</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" (click)="stopWatering()" [disabled]="!activeStatus || !waterStat">Stop</button>
                     </div>
                 </div>
 
@@ -34,11 +34,11 @@
                 <div class="card-body">
                     <h5>Light</h5>
                     <h6 class="card-title pricing-card-title"><small class="text-muted">Current status:</small> off </h6>
-                    <input class="form-control form-control-sm" type="text" placeholder="Duration -1 ms">
+                    <input class="form-control form-control-sm" type="text" placeholder="Duration -1 ms" id="lightDuration">
                     <br>
                     <div class="btn-group btn-group-toggle">
-                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" [disabled]="!activeStatus">Start</button>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" [disabled]="!activeStatus">Stop</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" (click)="startLightning()" [disabled]="!activeStatus || lightStat">Start</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-primary mx-2" (click)="stopLightning()" [disabled]="!activeStatus || !lightStat">Stop</button>
                     </div>
                 </div>
 

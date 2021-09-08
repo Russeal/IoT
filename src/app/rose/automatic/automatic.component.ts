@@ -19,6 +19,10 @@ export class AutomaticComponent implements OnInit {
     sunday: false
   };
 
+  public lie: boolean = false;
+
+  public dur?: number;
+
   public checkModel2: any = {
     water: false,
     light: false
@@ -28,32 +32,19 @@ export class AutomaticComponent implements OnInit {
 
   private week = [
     {
-      'water': {},
-      "light": {}
+
     },
     {
-      'water': {},
-      "light": {}
     },
     {
-      'water': {},
-      "light": {}
     },
     {
-      'water': {},
-      "light": {}
     },
     {
-      'water': {},
-      "light": {}
     },
     {
-      'water': {},
-      "light": {}
     },
     {
-      'water': {},
-      "light": {}
     }
   ];
 
@@ -86,107 +77,177 @@ export class AutomaticComponent implements OnInit {
       if (this.checkModel[x] === true) {
         switch (x) {
           case 'monday':
-            this.week[0] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[0] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[0] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[0] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'tuesday':
-            this.week[1] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[1] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[1] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[1] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'wednesday':
-            this.week[2] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[2] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[2] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[2] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'thursday':
-            this.week[3] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[3] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[3] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[3] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'friday':
-            this.week[4] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[4] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[4] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[4] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'saturday':
-            this.week[5] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[5] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[5] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[5] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
 
           case 'sunday':
-            this.week[6] = {
-              "water": (
-                this.checkModel2.water ?
-                { [time]: duration } :
-                {}
-              ),
-              "light": (
-                this.checkModel2.light ?
-                { [time]: duration } :
-                {}
-              ),
+            if (this.checkModel2.light && this.checkModel2.water) {
+              this.week[6] = {
+                "light": {
+                  [time]: duration
+                },
+                "water": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.light) {
+              this.week[6] = {
+                "light": {
+                  [time]: duration
+                }
+              }
+            } else if (this.checkModel2.water) {
+              this.week[6] = {
+                "water": {
+                  [time]: duration
+                }
+              }
             }
             break;
         }
@@ -200,10 +261,14 @@ export class AutomaticComponent implements OnInit {
           "schedData": this.week
         }
       }
+      console.log(JSON.stringify(plantJson));
 
-      this.resourceService.setPlantStatusAutoEnableWithData(this.plantId, JSON.stringify(plantJson)).subscribe(
+
+      this.resourceService.setPlantAutoSchedule(this.plantId, JSON.stringify(plantJson)).subscribe(
         (data) => {
+          this.lie = false;
           console.log(data);
+
 
         },
         error => console.log(error)
@@ -218,9 +283,50 @@ export class AutomaticComponent implements OnInit {
   private getSchedule() {
     this.resourceService.getAutomaticSchedule(this.plantId).subscribe(
       (data) => {
-        console.log(data)
+        this.lie = false;
+
+        for (let i = 0; i < data.length; i++) {
+
+          if (data[i].water || data[i].light) {
+            for (var key in data[i].light) {
+              this.dur = parseInt(data[i].light[key]);
+              (<HTMLInputElement>document.getElementById("inputTime")).value = key.slice(0, 5);
+            }
+            this.checkModel2.water = data[i].water ? true : null;
+            this.checkModel2.light = data[i].light ? true : null;
+            switch (i) {
+              case 0:
+                this.checkModel.monday = true;
+                break;
+              case 1:
+                this.checkModel.tuesday = true;
+                break;
+              case 2:
+                this.checkModel.wednesday = true;
+                break;
+              case 3:
+                this.checkModel.thursday = true;
+                break;
+              case 4:
+                this.checkModel.friday = true;
+                break;
+              case 5:
+                this.checkModel.saturday = true;
+                break;
+              case 6:
+                this.checkModel.sunday = true;
+                break;
+            }
+          }
+        }
       },
-      (error) => console.log(error)
+      (error) => {
+        if (error.status !== 200) {
+          console.log(error)
+        } else {
+          this.lie = true;
+        }
+      }
     );
   }
 
@@ -256,7 +362,18 @@ export class AutomaticComponent implements OnInit {
           })
         },
         error => {
-          console.log(error);
+          if (error.status === 500) {
+            this.activeAuto = true
+            document.getElementById('autoId')?.classList.add('active')
+
+            this.router.navigate(['.'],
+            {
+              relativeTo: this.activeRoute,
+              queryParams: { auto: true },
+              queryParamsHandling: 'merge'
+            })
+          }
+          console.log(error.status);
         }
       )
     }
