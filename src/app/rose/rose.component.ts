@@ -22,6 +22,10 @@ export class RoseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (window.innerWidth < 1200) {
+      (<HTMLElement>document.getElementById("bekorJoy")).style.display = "none";
+    }
     // this.plantId = this.activeRoute.snapshot.paramMap.get('flower') || ''
     this.activeRoute.paramMap.subscribe(paramMap => {
 

@@ -63,12 +63,11 @@ export class AutomaticComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.plantId = this.router.url.split('/')[1].split(';')[0];
 
-    setTimeout(() => {
-      this.activeAuto = (this.activeRoute.snapshot.queryParamMap.get('auto')==='true');
-    }, 50);
+    this.activeRoute.queryParamMap.subscribe(paramMap => {
+      this.activeAuto = paramMap.get("auto")==="true";
+    })
 
     this.getSchedule();
   }
@@ -430,8 +429,6 @@ export class AutomaticComponent implements OnInit {
   private getSchedule() {
     this.resourceService.getAutomaticSchedule(this.plantId).subscribe(
       (data) => {
-        console.log(data);
-
         this.lie = false;
 
         for (let i = 0; i < data.length; i++) {

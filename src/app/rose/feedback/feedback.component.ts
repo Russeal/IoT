@@ -18,12 +18,11 @@ export class FeedbackComponent implements OnInit {
   constructor(private router: Router, private  resourceService: ResourceService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activeRoute.queryParamMap.subscribe(paramMap => {
+      this.activeFeed = paramMap.get("feedback")==="true";
+    })
 
     this.plantId = this.router.url.split('/')[1].split(';')[0];
-
-    setTimeout(() => {
-      this.activeFeed = (this.activeRoute.snapshot.queryParamMap.get('feedback')==='true');
-    }, 50);
 
     this.getSchedule();
   }
@@ -108,7 +107,16 @@ export class FeedbackComponent implements OnInit {
 
 
   private getSchedule() {
-
+    this.resourceService.getFeedbackParams(this.plantId).subscribe(
+      data => {
+        console.log(data);
+        let x = JSON.parse(JSON.stringify(data))
+        this.light = x["light_time"];
+        this.humidity = x["hum_thresh"];
+        this.illum = x["illum_thresh"];
+      },
+      error => console.log(error)
+    );
   }
 
 }

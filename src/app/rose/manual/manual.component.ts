@@ -22,16 +22,13 @@ export class ManualComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.activeStatus = (this.activeRoute.snapshot.queryParamMap.get('manual')==='true');
-    }, 100);
+    this.activeRoute.queryParamMap.subscribe(paramMap => {
+      this.activeStatus = paramMap.get("manual")==="true";
+    })
 
     this.plantId = this.router.url.split('/')[1].split('?')[0];
 
-
-    this.getPlantStatus;
-
-
+    this.getPlantStatus();
   }
 
   public changeStatus() {
@@ -128,6 +125,7 @@ export class ManualComponent implements OnInit {
       'action': 'off',
       'duration': 0
     };
+    (<HTMLInputElement>document.getElementById("waterDuration")).value = "";
 
     console.log(plant);
 
@@ -180,6 +178,8 @@ export class ManualComponent implements OnInit {
       'action': 'off',
       'duration': 0
     };
+
+    (<HTMLInputElement>document.getElementById("lightDuration")).value = "";
 
     console.log(plant);
 

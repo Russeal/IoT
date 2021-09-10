@@ -3,6 +3,7 @@ export class GeneralURL {
     private static MANUAL_URL = 'https://smart-pot-manual-mode.herokuapp.com/';
     private static AUTOMATIC_URL = 'https://smart-pot-auto-mode.herokuapp.com/';
     private static MODE_URL = 'https://smart-pot-mode-manager.herokuapp.com/';
+    public static FEED_URL = 'https://smart-pot-feedback-mode.herokuapp.com/';
 
 
     public static resourceURL: string = GeneralURL.RESOURCE_URL + 'broker/';

@@ -59,6 +59,10 @@ export class ResourceService {
     return this.http.post(GeneralURL.modeURL + id + "/feedback/paramChange", body);
   }
 
+  public getFeedbackParams(id: String) {
+    return this.http.get(GeneralURL.FEED_URL + id + "/thresholds");
+  }
+
   public setPlantStatusFeedbackDisable(id: String) {
     return this.http.post(GeneralURL.modeURL + id + "/feedback/disable", '');
   }
