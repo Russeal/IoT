@@ -93,8 +93,14 @@ export class ManualComponent implements OnInit {
     let duration = parseInt((<HTMLInputElement>document.getElementById("waterDuration")).value);
     if (duration.toString() == "NaN") {
       duration = -1;
+    } else {
+      duration = duration * 1000
+      setTimeout(() => {
+        this.stopWatering()
+      }, duration);
     }
     this.waterStat = true;
+
 
     let plant = {
       'plantId': this.plantId,
@@ -139,6 +145,11 @@ export class ManualComponent implements OnInit {
     let duration = parseInt((<HTMLInputElement>document.getElementById("lightDuration")).value);
     if (duration.toString() == "NaN") {
       duration = -1;
+    } else {
+      duration = duration * 1000
+      setTimeout(() => {
+        this.stopLightning()
+      }, duration);
     }
     this.lightStat = true;
 
