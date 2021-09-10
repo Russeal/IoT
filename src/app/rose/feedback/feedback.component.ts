@@ -12,6 +12,8 @@ export class FeedbackComponent implements OnInit {
   private plantId = "";
   public activeFeed: boolean = false;
   public humidity: number = 0;
+  public illum: number = 0;
+  public light: number = 0;
 
   constructor(private router: Router, private  resourceService: ResourceService, private activeRoute: ActivatedRoute) { }
 
@@ -47,9 +49,13 @@ export class FeedbackComponent implements OnInit {
         }
       )
     } else {
-      let plant = {"light_time": 100, "hum_thresh": 100, "illum_thresh": 100}
+      let feedback = {
+        light_time: this.light,
+        hum_thresh: this.humidity,
+        illum_thresh: this.illum
+      }
 
-      this.resourceService.setPlantStatusFeedbackEnable(this.plantId, JSON.stringify(plant)).subscribe(
+      this.resourceService.setPlantStatusFeedbackEnable(this.plantId, JSON.stringify(feedback)).subscribe(
         (data) => {
           console.log(data);
 
@@ -82,6 +88,20 @@ export class FeedbackComponent implements OnInit {
   }
 
   public setSchedule() {
+    let feedback = {
+      light_time: this.light,
+      hum_thresh: this.humidity,
+      illum_thresh: this.illum
+    }
+    console.log(JSON.stringify(feedback));
+
+    this.resourceService.setFeedbackParams(this.plantId, JSON.stringify(feedback)).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      error => console.log(error)
+    );
+
 
   }
 

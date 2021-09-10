@@ -11,60 +11,28 @@
   </div>
   <div class="card-body">
       <div class="row">
-          <div class="col-12">
-            <div class="mb-3">
-              <h4 for="humidity">Humidity: {{ humidity }}</h4>
-              <input class="slider" style="width: 50%;" type="range" min="-1" max="100" id="humidity" >
+          <div class="col-12 mt-2">
+            <div class="mb-4 mx-auto" style="width: 50%;">
+              <h5 for="light">Light time: {{ light }}</h5>
+              <input class="form-control form-control-sm" type="number" placeholder="Duration -1 ms" [(ngModel)]="light" id="light" autocomplete="off">
             </div>
 
-            <div class="mb-3">
-              <h4 for="humidity">Humidity: {{ humidity }}</h4>
-              <input class="slider" style="width: 50%;" type="range" min="-1" max="100" id="humidity">
+            <div class="mb-4 mx-auto" style="width: 50%;">
+              <h5 for="illum">Illumidity: {{ illum }}</h5>
+              <input class="slider" style="width: 100%;" type="range" min="-1" max="100" id="illum" [(ngModel)]="illum">
             </div>
 
-            <div class="mb-3">
-              <h4 for="humidity">Humidity: {{ humidity }}</h4>
-              <input class="slider" style="width: 50%;" type="range" min="-1" max="100" id="humidity">
+            <div class="mx-auto" style="width: 50%;">
+              <h5 for="humidity">Humidity: {{ humidity }}</h5>
+              <input class="slider" style="width: 100%;" type="range" min="-1" max="100" id="humidity" [(ngModel)]="humidity">
             </div>
 
+            <br>
+
+            <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
+                    style="width: 25%; margin: 1.4rem auto 0 auto;"
+                                >Submit</button>
           </div>
-          <!-- <div class="col-6 pl-5">
-              <h4>Enter time:</h4>
-
-              <div class="md-form">
-                  <input
-                      type="time"
-                      id="inputTime"
-                      class="form-control"
-                      value="13:00"
-                      mdbInput
-                  />
-                  <label for="inputTime">Choose your time</label>
-              </div>
-
-              <h4>Enter duration:</h4>
-              <input class="form-control form-control-sm" id="inputDuration" type="number" min="-1" placeholder="-1 ms">
-              <br>
-              <br>
-              <div class="btn-group btn-group-toggle">
-
-                  <label class="mb-2 mr-4" mdbBtn color="secondary" mdbCheckbox mdbWavesEffect>
-                      Water
-                  </label>
-
-                  <label class="mb-2" mdbBtn color="secondary" mdbCheckbox mdbWavesEffect>
-                      Light
-                  </label>
-
-              </div>
-
-              <br>
-              <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
-                      style="width: 50%; margin: 1.4rem auto 0 auto;"
-
-
-                                  >Submit</button>
-          </div> -->
       </div>
   </div>
 </div>

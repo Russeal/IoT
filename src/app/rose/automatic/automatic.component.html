@@ -48,34 +48,75 @@
 
             </div>
             <div class="col-6 pl-5">
-                <h4>Enter time:</h4>
+              <div>
+                <h4>Water:</h4>
 
                 <div class="md-form">
                     <input
                         type="time"
                         id="inputTime"
                         class="form-control"
-                        value="13:00"
+                        [(ngModel)]="timeW"
                         mdbInput
                     />
                     <label for="inputTime">Choose your time</label>
+                    <label style="position: absolute; right: -50px; left: auto; color: #4285f4;" *ngIf="!secondTime">
+                      <a (click)="addTimer()"><mdb-icon fas icon="plus-circle"></mdb-icon></a>
+                    </label>
+                    <label style="position: absolute; right: -50px; left: auto; color: #4285f4;" *ngIf="secondTime">
+                      <a (click)="removeSecondTimer()"><mdb-icon fas icon="minus-circle"></mdb-icon></a>
+                    </label>
                 </div>
 
-                <h4>Enter duration:</h4>
-                <input [(ngModel)]="dur" class="form-control form-control-sm" id="inputDuration" type="number" min="-1" placeholder="-1 ms">
-                <br>
-                <br>
-                <div class="btn-group btn-group-toggle">
-
-                    <label class="mb-2 mr-4" mdbBtn color="secondary" [(ngModel)]="checkModel2.water" mdbCheckbox mdbWavesEffect>
-                        Water
-                    </label>
-
-                    <label class="mb-2" mdbBtn color="secondary" [(ngModel)]="checkModel2.light" mdbCheckbox mdbWavesEffect>
-                        Light
-                    </label>
-
+                <div class="md-form" *ngIf="secondTime">
+                  <input
+                      type="time"
+                      id="inputTime"
+                      class="form-control"
+                      [(ngModel)]="time2"
+                      mdbInput
+                  />
                 </div>
+
+                <label>Duration:</label>
+                <input [(ngModel)]="dur" class="form-control form-control-sm" id="inputDuration" type="number" min="-1" placeholder="-1 ms" autocomplete="off">
+
+              </div>
+<hr>
+              <div>
+                <h4>Light:</h4>
+
+                <div class="md-form">
+                    <input
+                        type="time"
+                        id="inputTime2"
+                        class="form-control"
+                        [(ngModel)]="timeL"
+                        mdbInput
+                    />
+                    <label for="inputTime2">Choose your time</label>
+                    <label style="position: absolute; right: -50px; left: auto; color: #4285f4;" *ngIf="!thirdTime">
+                      <a (click)="addTimer2()"><mdb-icon fas icon="plus-circle"></mdb-icon></a>
+                    </label>
+                    <label style="position: absolute; right: -50px; left: auto; color: #4285f4;" *ngIf="thirdTime">
+                      <a (click)="removeSecondTimer2()"><mdb-icon fas icon="minus-circle"></mdb-icon></a>
+                    </label>
+                </div>
+
+                <div class="md-form" *ngIf="thirdTime">
+                  <input
+                      type="time"
+                      id="inputTime2"
+                      class="form-control"
+                      [(ngModel)]="time3"
+                      mdbInput
+                  />
+                </div>
+
+                <label>Duration:</label>
+                <input [(ngModel)]="dur2" class="form-control form-control-sm" id="inputDuration2" type="number" min="-1" placeholder="-1 ms" autocomplete="off">
+
+              </div>
 
                 <br>
                 <button (click)="setSchedule()" type="button" class="btn btn-sm btn-block btn-outline-primary"
