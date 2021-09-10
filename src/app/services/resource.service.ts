@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GeneralURL } from '../util/generalUrl';
 import { PlantDTO } from '../util/plantDto';
 
@@ -26,8 +27,8 @@ export class ResourceService {
     return this.http.post(GeneralURL.removeURL, plant);
   }
 
-  public getPlantStatus(id: String) {
-    return this.http.get<Array<String>>(GeneralURL.modeURL + id + "/status");
+  public getPlantStatus (id: string): Observable<Array<string>> {
+    return this.http.get<Array<string>>(GeneralURL.modeURL + id + "/status");
   }
 
   public setPlantStatus(id: String, status: String) {
