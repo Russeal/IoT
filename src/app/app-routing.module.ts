@@ -14,7 +14,8 @@ const routes: Routes = [
     path: '', children: [
       { path: '', component: MainComponent },
       { path: ':flower', component: RoseComponent, children: [
-        { path: '', component: ManualComponent },
+        { path: '', component: DashboardComponent },
+        { path: 'manual', component: ManualComponent },
         { path: 'automatic', component: AutomaticComponent },
         { path: 'feedback', component: FeedbackComponent }
       ]}

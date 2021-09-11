@@ -9,7 +9,7 @@
                 <!--Card image-->
                 <div class="view overlay waves-light" mdbWavesEffect>
                     <mdb-card-img [src]="plant?.imageUrl"></mdb-card-img>
-                    <a>
+                    <a (click)="goToLink('./')">
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
 
                     <!-- Radio -->
                     <div class="btn-group">
-                        <button id="manuId" (click)="goToLink('./')" mdbBtn class="px ml-2 mr-1" color="primary" size="sm" mdbWavesEffect>
+                        <button id="manuId" (click)="goToLink('./manual')" mdbBtn class="px ml-2 mr-1" color="primary" size="sm" mdbWavesEffect>
                             Manual
                         </button>
                         <button id="autoId" (click)="goToLink('./automatic')" mdbBtn class="px mx-1" color="primary" size="sm" mdbWavesEffect>

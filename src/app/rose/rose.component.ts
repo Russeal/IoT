@@ -91,7 +91,7 @@ export class RoseComponent implements OnInit {
           document.getElementById('feedbackId')?.classList.add('active')
         }
 
-        this.router.navigate(['./'],
+        this.router.navigate(['./manual'],
           {
             relativeTo: this.activeRoute,
             queryParams: { manual: this.isManual, auto: this.isAuto, feedback: this.isFeed },
