@@ -12,7 +12,6 @@ export class ManualComponent implements OnInit {
 
   public activeStatus;
   private plantId = "";
-  private isAuto: boolean = false;
   private isFeed: boolean = false;
   public waterStat: boolean = false;
   public lightStat: boolean = false;
@@ -50,32 +49,34 @@ export class ManualComponent implements OnInit {
         }
       )
     } else {
-      this.resourceService.setPlantStatus(this.plantId, 'enable').subscribe(
-        (data) => {
+      if (!this.isFeed) {
+        this.resourceService.setPlantStatus(this.plantId, 'enable').subscribe(
+          (data) => {
 
-          this.activeStatus = true
-          document.getElementById('manuId')?.classList.add('active')
+            this.activeStatus = true
+            document.getElementById('manuId')?.classList.add('active')
 
-          this.router.navigate(['.'],
-            {
-              relativeTo: this.activeRoute,
-              queryParams: { manual: true },
-              queryParamsHandling: 'merge'
-            })
-        },
-        error => {
-          console.log(error);
-        }
-      )
+            this.router.navigate(['.'],
+              {
+                relativeTo: this.activeRoute,
+                queryParams: { manual: true },
+                queryParamsHandling: 'merge'
+              })
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      } else {
+        document.getElementById("errButton")?.click();
+        (<HTMLInputElement>document.getElementById("customSwitch1")).checked = false;
+      }
     }
   }
 
   private getPlantStatus() {
     this.resourceService.getPlantStatus(this.plantId).subscribe(
       (data) => {
-        if (data.includes('auto')) {
-          this.isAuto = true;
-        }
         if (data.includes('feedback')) {
           this.isFeed = true;
         }

@@ -57,6 +57,7 @@ export class AutomaticComponent implements OnInit {
   ];
 
   private plantId = "";
+  private isFeed: boolean = false;
 
   constructor(private router: Router, private  resourceService: ResourceService, private activeRoute: ActivatedRoute) {
     this.activeAuto = false;
@@ -70,6 +71,20 @@ export class AutomaticComponent implements OnInit {
     })
 
     this.getSchedule();
+    this.getPlantStatus();
+  }
+
+  private getPlantStatus() {
+    this.resourceService.getPlantStatus(this.plantId).subscribe(
+      (data) => {
+        if (data.includes('feedback')) {
+          this.isFeed = true;
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   public setSchedule() {
@@ -513,20 +528,9 @@ export class AutomaticComponent implements OnInit {
         }
       )
     } else {
-      this.resourceService.setPlantStatusAutoEnable(this.plantId).subscribe(
-        (data) => {
-          this.activeAuto = true
-          document.getElementById('autoId')?.classList.add('active')
-
-          this.router.navigate(['.'],
-          {
-            relativeTo: this.activeRoute,
-            queryParams: { auto: true },
-            queryParamsHandling: 'merge'
-          })
-        },
-        error => {
-          if (error.status === 500) {
+      if (!this.isFeed) {
+        this.resourceService.setPlantStatusAutoEnable(this.plantId).subscribe(
+          (data) => {
             this.activeAuto = true
             document.getElementById('autoId')?.classList.add('active')
 
@@ -536,10 +540,26 @@ export class AutomaticComponent implements OnInit {
               queryParams: { auto: true },
               queryParamsHandling: 'merge'
             })
+          },
+          error => {
+            if (error.status === 500) {
+              this.activeAuto = true
+              document.getElementById('autoId')?.classList.add('active')
+
+              this.router.navigate(['.'],
+              {
+                relativeTo: this.activeRoute,
+                queryParams: { auto: true },
+                queryParamsHandling: 'merge'
+              })
+            }
+            console.log(error.status);
           }
-          console.log(error.status);
-        }
-      )
+        )
+      } else {
+        document.getElementById("errButton")?.click();
+        (<HTMLInputElement>document.getElementById("customSwitch2")).checked = false;
+      }
     }
   }
 

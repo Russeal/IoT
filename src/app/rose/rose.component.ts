@@ -26,7 +26,6 @@ export class RoseComponent implements OnInit {
     if (window.innerWidth < 1200) {
       (<HTMLElement>document.getElementById("bekorJoy")).style.display = "none";
     }
-    // this.plantId = this.activeRoute.snapshot.paramMap.get('flower') || ''
     this.activeRoute.paramMap.subscribe(paramMap => {
 
       this.plantId = paramMap.get('flower') || '';
@@ -130,11 +129,15 @@ export class RoseComponent implements OnInit {
     return this.activeRoute.snapshot.queryParamMap.get('auto')==='true';
   }
 
+  private getFeed() {
+    return this.activeRoute.snapshot.queryParamMap.get('feedback')==='true';
+  }
+
   goToLink(link: string) {
     this.router.navigate([link],
       {
         relativeTo: this.activeRoute,
-        queryParams: { manual: this.getManual(), auto: this.getAuto(), feedback: this.isFeed },
+        queryParams: { manual: this.getManual(), auto: this.getAuto(), feedback: this.getFeed() },
         queryParamsHandling: 'merge'
       }
     )

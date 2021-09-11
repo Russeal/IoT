@@ -14,6 +14,8 @@ export class FeedbackComponent implements OnInit {
   public humidity: number = 0;
   public illum: number = 0;
   public light: number = 0;
+  private isAuto: boolean = false;
+  private isManual: boolean = false;
 
   constructor(private router: Router, private  resourceService: ResourceService, private activeRoute: ActivatedRoute) { }
 
@@ -25,14 +27,29 @@ export class FeedbackComponent implements OnInit {
     this.plantId = this.router.url.split('/')[1].split(';')[0];
 
     this.getSchedule();
+    this.getPlantStatus();
+  }
+
+  private getPlantStatus() {
+    this.resourceService.getPlantStatus(this.plantId).subscribe(
+      (data) => {
+        if (data.includes('auto')) {
+          this.isAuto = true;
+        }
+        if (data.includes('manual')) {
+          this.isManual = true;
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   public changeStatus() {
     if (this.activeFeed) {
       this.resourceService.setPlantStatusFeedbackDisable(this.plantId).subscribe(
         (data) => {
-          console.log(data);
-
           this.activeFeed = false
           document.getElementById('feedbackId')?.classList.remove('active')
 
@@ -48,28 +65,15 @@ export class FeedbackComponent implements OnInit {
         }
       )
     } else {
-      let feedback = {
-        light_time: this.light,
-        hum_thresh: this.humidity,
-        illum_thresh: this.illum
-      }
+      if (!this.isAuto && !this.isManual) {
+        let feedback = {
+          light_time: this.light,
+          hum_thresh: this.humidity,
+          illum_thresh: this.illum
+        }
 
-      this.resourceService.setPlantStatusFeedbackEnable(this.plantId, JSON.stringify(feedback)).subscribe(
-        (data) => {
-          console.log(data);
-
-          this.activeFeed = true
-          document.getElementById('feedbackId')?.classList.add('active')
-
-          this.router.navigate(['.'],
-          {
-            relativeTo: this.activeRoute,
-            queryParams: { feedback: true },
-            queryParamsHandling: 'merge'
-          })
-        },
-        error => {
-          if (error.status === 500) {
+        this.resourceService.setPlantStatusFeedbackEnable(this.plantId, JSON.stringify(feedback)).subscribe(
+          (data) => {
             this.activeFeed = true
             document.getElementById('feedbackId')?.classList.add('active')
 
@@ -79,10 +83,26 @@ export class FeedbackComponent implements OnInit {
               queryParams: { feedback: true },
               queryParamsHandling: 'merge'
             })
+          },
+          error => {
+            if (error.status === 500) {
+              this.activeFeed = true
+              document.getElementById('feedbackId')?.classList.add('active')
+
+              this.router.navigate(['.'],
+              {
+                relativeTo: this.activeRoute,
+                queryParams: { feedback: true },
+                queryParamsHandling: 'merge'
+              })
+            }
+            console.log(error);
           }
-          console.log(error);
-        }
-      )
+        )
+      } else {
+      document.getElementById("errButton")?.click();
+      (<HTMLInputElement>document.getElementById("customSwitch3")).checked = false;
+      }
     }
   }
 
@@ -109,7 +129,6 @@ export class FeedbackComponent implements OnInit {
   private getSchedule() {
     this.resourceService.getFeedbackParams(this.plantId).subscribe(
       data => {
-        console.log(data);
         let x = JSON.parse(JSON.stringify(data))
         this.light = x["light_time"];
         this.humidity = x["hum_thresh"];
