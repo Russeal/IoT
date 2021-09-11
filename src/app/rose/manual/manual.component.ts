@@ -92,10 +92,9 @@ export class ManualComponent implements OnInit {
     if (duration.toString() == "NaN") {
       duration = -1;
     } else {
-      duration = duration * 1000
       setTimeout(() => {
         this.stopWatering()
-      }, duration);
+      }, duration * 1000);
     }
     this.waterStat = true;
 
@@ -145,10 +144,9 @@ export class ManualComponent implements OnInit {
     if (duration.toString() == "NaN") {
       duration = -1;
     } else {
-      duration = duration * 1000
       setTimeout(() => {
         this.stopLightning()
-      }, duration);
+      }, duration * 1000);
     }
     this.lightStat = true;
 
