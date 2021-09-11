@@ -91,13 +91,23 @@ export class RoseComponent implements OnInit {
           document.getElementById('feedbackId')?.classList.add('active')
         }
 
-        this.router.navigate(['./manual'],
-          {
-            relativeTo: this.activeRoute,
-            queryParams: { manual: this.isManual, auto: this.isAuto, feedback: this.isFeed },
-            queryParamsHandling: 'merge'
-          }
-        )
+        if (this.plantId === "plant1") {
+          this.router.navigate(['./'],
+            {
+              relativeTo: this.activeRoute,
+              queryParams: { manual: this.isManual, auto: this.isAuto, feedback: this.isFeed },
+              queryParamsHandling: 'merge'
+            }
+          )
+        } else {
+          this.router.navigate(['./manual'],
+            {
+              relativeTo: this.activeRoute,
+              queryParams: { manual: this.isManual, auto: this.isAuto, feedback: this.isFeed },
+              queryParamsHandling: 'merge'
+            }
+          )
+        }
       },
       error => {
         console.log(error);

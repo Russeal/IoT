@@ -129,10 +129,12 @@ export class FeedbackComponent implements OnInit {
   private getSchedule() {
     this.resourceService.getFeedbackParams(this.plantId).subscribe(
       data => {
-        let x = JSON.parse(JSON.stringify(data))
-        this.light = x["light_time"];
-        this.humidity = x["hum_thresh"];
-        this.illum = x["illum_thresh"];
+        if (data !== null) {
+          let x = JSON.parse(JSON.stringify(data))
+          this.light = x["light_time"];
+          this.humidity = x["hum_thresh"];
+          this.illum = x["illum_thresh"];
+        }
       },
       error => console.log(error)
     );
