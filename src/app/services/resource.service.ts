@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GeneralURL } from '../util/generalUrl';
-import { PlantDTO } from '../util/plantDto';
 
 @Injectable({
   providedIn: 'root'

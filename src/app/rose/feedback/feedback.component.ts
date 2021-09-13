@@ -124,8 +124,6 @@ export class FeedbackComponent implements OnInit {
 
   }
 
-
-
   private getSchedule() {
     this.resourceService.getFeedbackParams(this.plantId).subscribe(
       data => {
